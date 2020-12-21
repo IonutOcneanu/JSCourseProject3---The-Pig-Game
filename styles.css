@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Anton", sans-serif;
+}
+
+body {
+  background: radial-gradient(
+      circle,
+      rgba(255, 204, 255, 1) 0%,
+      rgba(51, 204, 255, 1) 100%
+    )
+    fixed;
+  height: 900px;
+  position: relative;
+}
+
+.start-screen,
+.wrapper {
+  box-shadow: 5px 10px 25px rgb(9, 68, 107);
+}
+
+.start-screen {
+  background-color: #54a0be;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 25%;
+  transform: translateY(50%);
+  z-index: 15;
+  border-radius: 15px;
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.field {
+  position: relative;
+  width: 50%;
+  margin: 50px 100px;
+  height: 20%;
+  text-align: center;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  font-size: 40px;
+  text-transform: uppercase;
+  box-shadow: 0px 10px 15px rgb(9, 68, 107);
+}
+
+.field::-webkit-input-placeholder {
+  font-size: 20px;
+  line-height: 40px;
+  position: relative;
+  top: -10px;
+}
+
+.field:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.start-button {
+  /*positioning*/
+  background-color: white;
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 25%;
+  margin-top: 250px;
+}
+
+.start-button {
+  /*cosmetic*/
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 5px 10px 25px rgb(9, 68, 107);
+}
+
+.wrapper {
+  /* positioning*/
+  display: flex;
+  position: relative;
+  margin: auto;
+  width: 50%;
+  max-width: 1200px;
+  height: 50%;
+  transform: translateY(50%);
+}
+
+.wrapper {
+  /* cosmetic*/
+  background-color: #2b7a92;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  background-color: #3d95af;
+}
+
+.one {
+  border-radius: 15px 0 0 15px;
+  opacity: 1;
+}
+
+.two {
+  border-radius: 0 15px 15px 0;
+  opacity: 0.4;
+}
+
+.player,
+.round-score {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  top: 50px;
+  color: white;
+}
+
+.player {
+  width: 50%;
+  font-size: 35px;
+}
+
+.round-score {
+  width: 20%;
+  font-size: 75px;
+}
+
+.current-score {
+  background-color: #005780;
+  width: 40%;
+  height: 20%;
+  margin: 170px auto;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  line-height: 35px; /* text alignement vertically */
+}
+
+.current-score span.score {
+  position: absolute;
+  margin-top: 40px;
+  margin-left: -50px;
+  font-size: 40px;
+}
+
+.new-game,
+.roll-dice,
+.hold {
+  /*cosmetic*/
+  background-color: #a9e4ff;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.new-game {
+  /*cosmetic*/
+  font-size: 20px;
+}
+
+.roll-dice,
+.hold {
+  /*cosmetic*/
+  font-size: 15px;
+}
+
+.new-game,
+.roll-dice,
+.hold {
+  /*positioning*/
+  position: absolute;
+  z-index: 16;
+}
+
+.new-game {
+  /*positioning*/
+  width: 17%;
+  height: 15%;
+  margin-top: -300px;
+}
+
+.roll-dice {
+  /*positioning*/
+  width: 12%;
+  height: 8%;
+  margin-top: 260px;
+  line-height: 8px;
+}
+
+.hold {
+  /*positioning*/
+  width: 10%;
+  height: 8%;
+  margin-top: 360px;
+  line-height: 8px;
+}
