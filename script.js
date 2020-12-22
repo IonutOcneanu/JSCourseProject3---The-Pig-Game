@@ -12,4 +12,4 @@ const rollDice = function () {
 
 diceRoll.addEventListener("click", rollDice);
 
-TODO: // Create a div for each dice face (with one span for each dot) and display it based on the roll
+//TODO: Create a div for each dice face (with one span for each dot) and display it based on the roll
