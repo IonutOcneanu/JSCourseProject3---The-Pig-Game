@@ -11,7 +11,7 @@
     />
   </head>
   <body>
-    <div class="start-screen hidden">
+    <div class="start-screen start-hidden">
       <input
         type="text"
         maxlength="8"
@@ -24,10 +24,59 @@
         placeholder="Insert Player 2 name"
         class="field"
       />
-      <button type="button" class="start-button">Start the game!</button>
+      <button type="submit" class="start-button">Start the game!</button>
     </div>
     <div class="wrapper">
       <button type="button" class="new-game">🔁 NEW GAME</button>
+      <div class="dice dice-box dice-noshow">
+        <div class="face1 dice faces hidden">
+          <span class="dot"></span>
+        </div>
+        <div class="face2 dice faces hidden">
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="face3 dice faces hidden">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="face4 dice faces hidden">
+          <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <div class="face5 dice faces hidden">
+          <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="column">
+            <span class="dot"></span>
+          </div>
+          <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <div class="face6 dice faces hidden">
+          <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
       <button type="button" class="roll-dice">🎲 ROLL DICE</button>
       <button type="button" class="hold">📥 HOLD</button>
       <div class="container one">
