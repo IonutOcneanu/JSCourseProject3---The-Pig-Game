@@ -1,15 +1,71 @@
 "use strict";
 
-//In work
+//INWORK
 
-let diceRoll = document.querySelector(".roll-dice");
+//Start page
+const startBtn = document.querySelector(".start-button");
+const startScreen = document.querySelector(".start-screen");
+const playerNames = document.querySelectorAll(".field");
+const displayedNames = document.querySelectorAll(".player");
+const form = document.getElementById("form");
 
-//On click, roll the dice
-const rollDice = function () {
-  const dice = Math.trunc(Math.random() * 5) + 1;
-  return dice;
+const startGame = function () {
+  //TODO: startScreen.classList.add("start-hidden");
+  console.log(playerNames[0].textContent, playerNames[1].textContent);
+  //   displayedNames[0].textContent = playerNames[0].textContent;
+  //   displayedNames[1].textContent = playerNames[1].textContent;
 };
 
-diceRoll.addEventListener("click", rollDice);
+startBtn.addEventListener("click", startGame);
 
-//TODO: Create a div for each dice face (with one span for each dot) and display it based on the roll
+//////////
+
+const rollBtn = document.querySelector(".roll-dice");
+const showDiceFaces = document.querySelectorAll(".dice");
+const showDice = document.querySelector(".dice-box");
+const newGame = document.querySelector(".new-game");
+const totalScore = document.querySelectorAll(".round-score");
+const currentScore = document.querySelectorAll(".score");
+const holdBtn = document.querySelector(".hold");
+
+//It's called on each roll button click
+let rolledNumber;
+
+function rollDice() {
+  rolledNumber = Math.trunc(Math.random() * 6) + 1;
+  return rolledNumber;
+}
+
+//On click, display the corresponding face
+const displayDice = function () {
+  rollDice();
+  showDice.classList.remove("dice-noshow");
+  console.log(rolledNumber);
+  for (let i = 1; i <= showDiceFaces.length; i++) {
+    if (rolledNumber === i) {
+      console.log(showDiceFaces[i]);
+      showDiceFaces[i].classList.remove("hidden");
+    }
+  }
+  return rolledNumber;
+};
+
+rollBtn.addEventListener("click", displayDice);
+
+//Start a new game
+
+const resetGame = function () {
+  currentScore.textContent = "0";
+  totalScore.textContent = "0";
+  showDice.classList.add("dice-noshow");
+};
+
+newGame.addEventListener("click", resetGame);
+
+/*TODO: 
+-Change currentScore based on which player is playing;
+-If current player rolls 1, reset totalScore and changePlayer;
+-Hide previous dice face;
+-Get name from input field;
+-Check winner
+*/
