@@ -32,7 +32,7 @@ body {
   display: flex;
 }
 
-.hidden {
+.start-hidden {
   display: none;
 }
 
@@ -215,4 +215,90 @@ button:hover {
   height: 8%;
   margin-top: 360px;
   line-height: 8px;
+}
+
+.dice-box {
+  /*cosmetic*/
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 5px 10px 25px rgb(9, 68, 107);
+}
+
+.dice-box {
+  /*positioning*/
+  position: absolute;
+  z-index: 16;
+}
+
+.dot {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.faces {
+  position: absolute;
+  display: flex;
+  height: 100px;
+  width: 100px;
+}
+
+.face1 {
+  justify-content: center;
+  align-items: center;
+}
+
+.face2 {
+  justify-content: space-between;
+}
+
+.face2 .dot:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+.face3 {
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.face3 .dot:nth-of-type(1) {
+  align-self: flex-start;
+}
+
+.face3 .dot:nth-of-type(3) {
+  align-self: flex-end;
+}
+
+.face4,
+.face5,
+.face6 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.face5 .column:nth-of-type(2) {
+  justify-content: center;
+  align-items: center;
+}
+
+.dice-noshow {
+  display: none;
+}
+
+.hidden {
+  display: none;
 }
