@@ -91,7 +91,6 @@ function addScore() {
 }
 
 //Start a new game
-
 const resetGame = function () {
   currentScores[0].textContent = "0";
   currentScores[1].textContent = "0";
@@ -105,9 +104,7 @@ const resetGame = function () {
 newGame.addEventListener("click", resetGame);
 
 /*TODO: 
--Change currentScore based on which player is playing;
--If current player rolls 1, reset totalScore and changePlayer;
--Hide previous dice face;
+- HOLD button functionality
 -Get name from input field;
 -Check winner
 */
