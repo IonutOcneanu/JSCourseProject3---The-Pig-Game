@@ -74,25 +74,51 @@ rollBtn.addEventListener("click", displayDice);
 //Current score & player turn update
 const activePlayerOne = document.getElementById("one");
 const activePlayerTwo = document.getElementById("two");
+const activeOpacityValue = "1";
+const waittingOpacityValue = "0.3";
+
+let pOneTrack = 0;
+let pTwoTrack = 0;
 
 function addScore() {
   //Player 1
-  if (activePlayerOne.style.opacity === "1" && rolledNumber !== 1) {
+  if (
+    activePlayerOne.style.opacity === activeOpacityValue &&
+    rolledNumber !== 1
+  ) {
     currentScores[0].textContent =
       parseInt(currentScores[0].textContent, 10) + rolledNumber;
-  } else if (activePlayerOne.style.opacity === "1" && rolledNumber === 1) {
+  } else if (
+    activePlayerOne.style.opacity === activeOpacityValue &&
+    rolledNumber === 1
+  ) {
     currentScores[0].textContent = 0;
-    activePlayerOne.style.opacity = "0.4";
-    activePlayerTwo.style.opacity = "1";
+    activePlayerOne.style.opacity = waittingOpacityValue;
+    activePlayerTwo.style.opacity = activeOpacityValue;
+    pOneTrack += 1;
   }
   //Player 2
-  else if (activePlayerTwo.style.opacity === "1" && rolledNumber !== 1) {
+  else if (
+    activePlayerTwo.style.opacity === activeOpacityValue &&
+    rolledNumber !== 1
+  ) {
     currentScores[1].textContent =
       parseInt(currentScores[1].textContent, 10) + rolledNumber;
-  } else if (activePlayerTwo.style.opacity === "1" && rolledNumber === 1) {
+  } else if (
+    activePlayerTwo.style.opacity === activeOpacityValue &&
+    rolledNumber === 1
+  ) {
     currentScores[1].textContent = 0;
-    activePlayerOne.style.opacity = "1";
-    activePlayerTwo.style.opacity = "0.4";
+    activePlayerOne.style.opacity = activeOpacityValue;
+    activePlayerTwo.style.opacity = waittingOpacityValue;
+    pTwoTrack += 1;
+  }
+
+  // For testing, needs better implementation
+  if (pOneTrack === 3) {
+    console.log("Player Two won!");
+  } else if (pTwoTrack === 3) {
+    console.log("Player One won!");
   }
 }
 
