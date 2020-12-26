@@ -2,6 +2,12 @@
 
 //INWORK
 
+/*TODO: 
+- HOLD button functionality
+-Get name from input field;
+-Check winner
+*/
+
 //Start page
 const startBtn = document.querySelector(".start-button");
 const startScreen = document.querySelector(".start-screen");
@@ -102,9 +108,3 @@ const resetGame = function () {
 };
 
 newGame.addEventListener("click", resetGame);
-
-/*TODO: 
-- HOLD button functionality
--Get name from input field;
--Check winner
-*/
