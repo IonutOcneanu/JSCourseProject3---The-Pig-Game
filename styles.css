@@ -114,14 +114,12 @@ button:hover {
   background-color: #3d95af;
 }
 
-.one {
+#one {
   border-radius: 15px 0 0 15px;
-  opacity: 1;
 }
 
-.two {
+#two {
   border-radius: 0 15px 15px 0;
-  opacity: 0.4;
 }
 
 .player,
