@@ -3,9 +3,9 @@
 //INWORK
 
 /*TODO: 
-- HOLD button functionality
+- HOLD button functionality / check winner ---> reset score when dice rolls 1 and check who has the highest score if X holds (6 for 3 rounds) have been done
+- Add a function for ^ + rolling 1 which is currently included in the addScore function
 -Get name from input field;
--Check winner
 */
 
 //Start page
@@ -29,10 +29,6 @@ startBtn.addEventListener("click", startGame);
 const rollBtn = document.querySelector(".roll-dice");
 const showDiceFaces = document.querySelectorAll(".dice");
 const showDice = document.querySelector(".dice-box");
-const newGame = document.querySelector(".new-game");
-const totalScore = document.querySelectorAll(".round-score");
-const currentScores = document.querySelectorAll(".score");
-const holdBtn = document.querySelector(".hold");
 
 //Resets the dice on second and onward rollBtn clicks (hides faces if visible)
 let isClick = 0;
@@ -72,13 +68,18 @@ rollBtn.addEventListener("click", hideDice); //only runs if isClick === 1;
 rollBtn.addEventListener("click", displayDice);
 
 //Current score & player turn update
+const totalScore = document.querySelectorAll(".round-score");
+const currentScores = document.querySelectorAll(".score");
 const activePlayerOne = document.getElementById("one");
 const activePlayerTwo = document.getElementById("two");
+const overlay = document.querySelector(".overlay");
+const winBox = document.querySelector(".win-box");
+const winMessage = document.querySelector(".win-message");
 const activeOpacityValue = "1";
 const waittingOpacityValue = "0.3";
-
 let pOneTrack = 0;
 let pTwoTrack = 0;
+const lossScore = 3;
 
 function addScore() {
   //Player 1
@@ -114,23 +115,55 @@ function addScore() {
     pTwoTrack += 1;
   }
 
-  // For testing, needs better implementation
-  if (pOneTrack === 3) {
-    console.log("Player Two won!");
-  } else if (pTwoTrack === 3) {
-    console.log("Player One won!");
+  if (pOneTrack === lossScore) {
+    winMessage.textContent = `Player Two Has Won!`;
+    overlay.classList.remove("hidden");
+    winBox.classList.remove("hidden");
+  } else if (pTwoTrack === lossScore) {
+    winMessage.textContent = `Player One Has Won!`;
+    overlay.classList.remove("hidden");
+    winBox.classList.remove("hidden");
   }
 }
 
+//Hold the current score and end the turn
+const holdBtn = document.querySelector(".hold");
+
+const holdScore = function () {
+  if (activePlayerOne.style.opacity === activeOpacityValue) {
+    totalScore[0].textContent =
+      parseInt(totalScore[0].textContent, 10) +
+      parseInt(currentScores[0].textContent, 10);
+    currentScores[0].textContent = 0;
+    activePlayerOne.style.opacity = waittingOpacityValue;
+    activePlayerTwo.style.opacity = activeOpacityValue;
+  } else if (activePlayerTwo.style.opacity === activeOpacityValue) {
+    totalScore[1].textContent =
+      parseInt(totalScore[1].textContent, 10) +
+      parseInt(currentScores[1].textContent, 10);
+    currentScores[1].textContent = 0;
+    activePlayerOne.style.opacity = activeOpacityValue;
+    activePlayerTwo.style.opacity = waittingOpacityValue;
+  }
+};
+
+holdBtn.addEventListener("click", holdScore);
+
 //Start a new game
+const newGame = document.querySelector(".new-game");
+
 const resetGame = function () {
+  showDice.classList.add("dice-noshow");
+  overlay.classList.add("hidden");
+  winBox.classList.add("hidden");
   currentScores[0].textContent = "0";
   currentScores[1].textContent = "0";
   totalScore[0].textContent = "0";
   totalScore[1].textContent = "0";
-  showDice.classList.add("dice-noshow");
   activePlayerOne.style.opacity = "1";
   activePlayerTwo.style.opacity = "0.4";
+  pOneTrack = 0;
+  pTwoTrack = 0;
 };
 
 newGame.addEventListener("click", resetGame);
