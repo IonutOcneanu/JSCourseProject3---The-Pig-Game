@@ -1,9 +1,6 @@
 "use strict";
 
-//INWORK
-
 /*TODO: 
-
 -Get name from input field;
 */
 
@@ -15,10 +12,10 @@ const displayedNames = document.querySelectorAll(".player");
 const form = document.getElementById("form");
 
 const startGame = function () {
-  //TODO: startScreen.classList.add("start-hidden");
+  //startScreen.classList.add("start-hidden");
   console.log(playerNames[0].textContent, playerNames[1].textContent);
-  //   displayedNames[0].textContent = playerNames[0].textContent;
-  //   displayedNames[1].textContent = playerNames[1].textContent;
+  //displayedNames[0].textContent = playerNames[0].textContent;
+  //displayedNames[1].textContent = playerNames[1].textContent;
 };
 
 startBtn.addEventListener("click", startGame);
@@ -46,7 +43,7 @@ const hideDice = function hideFaces() {
 let rolledNumber;
 function rollDice() {
   rolledNumber = Math.trunc(Math.random() * 6) + 1;
-  console.log(rolledNumber);
+  //console.log(rolledNumber);
   return rolledNumber;
 }
 
