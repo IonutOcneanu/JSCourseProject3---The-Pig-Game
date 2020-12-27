@@ -3,8 +3,7 @@
 //INWORK
 
 /*TODO: 
-- HOLD button functionality / check winner ---> reset score when dice rolls 1 and check who has the highest score if X holds (6 for 3 rounds) have been done
-- Add a function for ^ + rolling 1 which is currently included in the addScore function
+
 -Get name from input field;
 */
 
@@ -32,7 +31,7 @@ const showDice = document.querySelector(".dice-box");
 
 //Resets the dice on second and onward rollBtn clicks (hides faces if visible)
 let isClick = 0;
-const hideDice = function () {
+const hideDice = function hideFaces() {
   if (isClick !== 0) {
     for (let i = 1; i <= showDiceFaces.length; i++) {
       if (!showDiceFaces[i].classList.contains("hidden")) {
@@ -79,7 +78,7 @@ const activeOpacityValue = "1";
 const waittingOpacityValue = "0.3";
 let pOneTrack = 0;
 let pTwoTrack = 0;
-const lossScore = 3;
+const lossScore = 10;
 
 function addScore() {
   //Player 1
@@ -115,12 +114,17 @@ function addScore() {
     pTwoTrack += 1;
   }
 
+  faceOneRoll();
+}
+
+//Tracking how many times each player rolls 1, so that the turn ends and switches to the other player. At #lossScore rolls of one, the player losses and the game ends.
+function faceOneRoll() {
   if (pOneTrack === lossScore) {
-    winMessage.textContent = `Player Two Has Won!`;
+    winMessage.textContent = `You rolled one more than ${lossScore} times ☹. Player Two Has Won!`;
     overlay.classList.remove("hidden");
     winBox.classList.remove("hidden");
   } else if (pTwoTrack === lossScore) {
-    winMessage.textContent = `Player One Has Won!`;
+    winMessage.textContent = `You rolled one more than ${lossScore} times ☹. Player One Has Won!`;
     overlay.classList.remove("hidden");
     winBox.classList.remove("hidden");
   }
@@ -145,9 +149,23 @@ const holdScore = function () {
     activePlayerOne.style.opacity = activeOpacityValue;
     activePlayerTwo.style.opacity = waittingOpacityValue;
   }
+  winningScore();
 };
 
 holdBtn.addEventListener("click", holdScore);
+const winScore = 100;
+
+function winningScore() {
+  if (parseInt(totalScore[0].textContent, 10) >= winScore) {
+    winMessage.textContent = `Player one has won with ${totalScore[0].textContent} points!`;
+    overlay.classList.remove("hidden");
+    winBox.classList.remove("hidden");
+  } else if (parseInt(totalScore[1].textContent, 10) >= winScore) {
+    winMessage.textContent = `Player two has won with ${totalScore[1].textContent} points!`;
+    overlay.classList.remove("hidden");
+    winBox.classList.remove("hidden");
+  }
+}
 
 //Start a new game
 const newGame = document.querySelector(".new-game");
