@@ -6,16 +6,15 @@
 
 //Start page
 const startBtn = document.querySelector(".start-button");
-const startScreen = document.querySelector(".start-screen");
+const startScreen = document.getElementById("start-screen");
 const playerNames = document.querySelectorAll(".field");
 const displayedNames = document.querySelectorAll(".player");
-const form = document.getElementById("form");
 
 const startGame = function () {
-  //startScreen.classList.add("start-hidden");
+  startScreen.style.display = "none";
   console.log(playerNames[0].textContent, playerNames[1].textContent);
-  //displayedNames[0].textContent = playerNames[0].textContent;
-  //displayedNames[1].textContent = playerNames[1].textContent;
+  // displayedNames[0].textContent = playerNames[0].textContent;
+  // displayedNames[1].textContent = playerNames[1].textContent;
 };
 
 startBtn.addEventListener("click", startGame);
@@ -175,8 +174,8 @@ const resetGame = function () {
   currentScores[1].textContent = "0";
   totalScore[0].textContent = "0";
   totalScore[1].textContent = "0";
-  activePlayerOne.style.opacity = "1";
-  activePlayerTwo.style.opacity = "0.4";
+  activePlayerOne.style.opacity = activeOpacityValue;
+  activePlayerTwo.style.opacity = waittingOpacityValue;
   pOneTrack = 0;
   pTwoTrack = 0;
 };
