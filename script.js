@@ -9,12 +9,13 @@ const startBtn = document.querySelector(".start-button");
 const startScreen = document.getElementById("start-screen");
 const playerNames = document.querySelectorAll(".field");
 const displayedNames = document.querySelectorAll(".player");
+const gameContainer = document.querySelector(".wrapper");
 
-const startGame = function () {
-  startScreen.style.display = "none";
-  console.log(playerNames[0].textContent, playerNames[1].textContent);
-  // displayedNames[0].textContent = playerNames[0].textContent;
-  // displayedNames[1].textContent = playerNames[1].textContent;
+const startGame = function (e) {
+  e.preventDefault();
+  gameContainer.style.zIndex = 16;
+  displayedNames[0].textContent = String(playerNames[0].value).toUpperCase();
+  displayedNames[1].textContent = String(playerNames[1].value).toUpperCase();
 };
 
 startBtn.addEventListener("click", startGame);
