@@ -10,12 +10,18 @@ const startScreen = document.getElementById("start-screen");
 const playerNames = document.querySelectorAll(".field");
 const displayedNames = document.querySelectorAll(".player");
 const gameContainer = document.querySelector(".wrapper");
+const errMessage = document.querySelector(".message");
+const oneRolledCounter = document.querySelector(".ones-rolled");
 
 const startGame = function (e) {
   e.preventDefault();
   gameContainer.style.zIndex = 16;
+  // if (playerNames[0].textContent === " " || playerNames[1].textContent == " ") {
+  //   document.querySelector(".message").style.display = "block";
+  // }
   displayedNames[0].textContent = String(playerNames[0].value).toUpperCase();
   displayedNames[1].textContent = String(playerNames[1].value).toUpperCase();
+  oneRolledCounter.style.display = "flex";
 };
 
 startBtn.addEventListener("click", startGame);
@@ -68,6 +74,8 @@ const totalScore = document.querySelectorAll(".round-score");
 const currentScores = document.querySelectorAll(".score");
 const activePlayerOne = document.getElementById("one");
 const activePlayerTwo = document.getElementById("two");
+const oneRollsPlayerOne = document.getElementById("pl-one");
+const oneRollsPlayerTwo = document.getElementById("pl-two");
 const overlay = document.querySelector(".overlay");
 const winBox = document.querySelector(".win-box");
 const winMessage = document.querySelector(".win-message");
@@ -93,6 +101,9 @@ function addScore() {
     activePlayerOne.style.opacity = waittingOpacityValue;
     activePlayerTwo.style.opacity = activeOpacityValue;
     pOneTrack += 1;
+    oneRollsPlayerOne.textContent = `If you roll ONE ${
+      10 - pOneTrack
+    } more times, you lose!`;
   }
   //Player 2
   else if (
@@ -109,6 +120,9 @@ function addScore() {
     activePlayerOne.style.opacity = activeOpacityValue;
     activePlayerTwo.style.opacity = waittingOpacityValue;
     pTwoTrack += 1;
+    oneRollsPlayerTwo.textContent = `If you roll ONE ${
+      10 - pTwoTrack
+    } more times, you lose!`;
   }
 
   faceOneRoll();
@@ -117,11 +131,11 @@ function addScore() {
 //Tracking how many times each player rolls 1, so that the turn ends and switches to the other player. At #lossScore rolls of one, the player losses and the game ends.
 function faceOneRoll() {
   if (pOneTrack === lossScore) {
-    winMessage.textContent = `You rolled one more than ${lossScore} times ☹. Player Two Has Won!`;
+    winMessage.textContent = `${displayedNames[0].textContent} rolled one more than ${lossScore} times ☹. ${displayedNames[1].textContent} Has Won!`;
     overlay.classList.remove("hidden");
     winBox.classList.remove("hidden");
   } else if (pTwoTrack === lossScore) {
-    winMessage.textContent = `You rolled one more than ${lossScore} times ☹. Player One Has Won!`;
+    winMessage.textContent = `${displayedNames[1].textContent} rolled one more than ${lossScore} times ☹. ${displayedNames[0].textContent} Has Won!`;
     overlay.classList.remove("hidden");
     winBox.classList.remove("hidden");
   }
@@ -154,11 +168,11 @@ const winScore = 100;
 
 function winningScore() {
   if (parseInt(totalScore[0].textContent, 10) >= winScore) {
-    winMessage.textContent = `Player one has won with ${totalScore[0].textContent} points!`;
+    winMessage.textContent = `${displayedNames[0].textContent} has won with ${totalScore[0].textContent} points!`;
     overlay.classList.remove("hidden");
     winBox.classList.remove("hidden");
   } else if (parseInt(totalScore[1].textContent, 10) >= winScore) {
-    winMessage.textContent = `Player two has won with ${totalScore[1].textContent} points!`;
+    winMessage.textContent = `${displayedNames[1].textContent} has won with ${totalScore[1].textContent} points!`;
     overlay.classList.remove("hidden");
     winBox.classList.remove("hidden");
   }
@@ -179,6 +193,8 @@ const resetGame = function () {
   activePlayerTwo.style.opacity = waittingOpacityValue;
   pOneTrack = 0;
   pTwoTrack = 0;
+  oneRollsPlayerTwo.textContent = `If you roll ONE 10 more times, you lose!`;
+  oneRollsPlayerOne.textContent = `If you roll ONE 10 more times, you lose!`;
 };
 
 newGame.addEventListener("click", resetGame);
