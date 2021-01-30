@@ -19,11 +19,11 @@
   <body>
     <div class="info-box">
       <p class="info">
-        A player wins when he reaches 100 points or when the other player rolls
-        One 10 times.
+        A player wins when they reaches 100 points or when the other player
+        rolls One 10 times.
       </p>
     </div>
-
+    <!-- <p class="message">Please choose a username!</p> -->
     <form class="hidden-windows" id="start-screen">
       <input
         type="text"
@@ -115,6 +115,11 @@
     <div class="win-box hidden">
       <span class="win-message"></span>
       <span class="win-message">🏆</span>
+    </div>
+
+    <div class="ones-rolled">
+      <p id="pl-one">If you roll ONE 10 more times, you lose!</p>
+      <p id="pl-two">If you roll ONE 10 more times, you lose!</p>
     </div>
 
     <script src="script.js"></script>
