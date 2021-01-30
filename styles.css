@@ -45,6 +45,33 @@ body {
   z-index: 16;
 }
 
+/* .message {
+  position: absolute;
+  width: 50%;
+  height: 25%;
+  left: 25%;
+  transform: translateY(75%);
+  text-align: center;
+  justify-content: center;
+  transition: all 0.5s;
+  display: none;
+} */
+
+.ones-rolled {
+  position: absolute;
+  display: none;
+  padding: 5px;
+  width: 50%;
+  height: 25%;
+  left: 25%;
+  transform: translateY(115%);
+  text-align: center;
+}
+.ones-rolled p {
+  margin: 0 100px;
+  width: 50%;
+}
+
 .win-box {
   background-color: #54a0be;
   position: absolute;
@@ -56,6 +83,7 @@ body {
   box-shadow: 5px 10px 25px rgb(9, 68, 107);
   justify-content: center;
   text-align: center;
+  z-index: 16;
 }
 
 .win-message {
